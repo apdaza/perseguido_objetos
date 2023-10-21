@@ -24,7 +24,9 @@ class Juego:
                     exit()
             self.screen.blit(self.background, (0, 0))
             self.heroe.draw(self.screen)
+            self.heroe.update()
             display.update()
+            time.delay(50)
                     
 
 

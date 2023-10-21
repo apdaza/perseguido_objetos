@@ -22,7 +22,25 @@ class Personaje(Sprite):
         screen.blit(self.image, self.rect)
 
 class Heroe(Personaje):
-    pass
+    def update(self):
+        teclas = pygame.key.get_pressed()
+        if teclas[K_DOWN]:
+            self.sentido = 0
+            self.rect.y += self.velocidad
+        if teclas[K_UP]:
+            self.sentido = 1
+            self.rect.y -= self.velocidad
+        if teclas[K_RIGHT]:
+            self.sentido = 2
+            self.rect.x += self.velocidad
+        if teclas[K_LEFT]:
+            self.sentido = 3
+            self.rect.x -= self.velocidad
+        if teclas[K_DOWN] or teclas[K_LEFT] or teclas[K_RIGHT] or teclas[K_UP]:
+            self.cont += 1
+            self.cont %= 3
+            self.image = self.imagenes[self.sentido][self.cont]
+
 
 class Villano(Personaje):
     pass
