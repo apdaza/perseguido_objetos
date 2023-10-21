@@ -1,0 +1,7 @@
+@startuml
+
+Juego -- Personaje
+Personaje <|-- Heroe
+Personaje <|-- Villano
+
+@enduml
