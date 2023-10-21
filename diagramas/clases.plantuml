@@ -3,5 +3,6 @@
 Juego -- Personaje
 Personaje <|-- Heroe
 Personaje <|-- Villano
+Personaje .. Personaje
 
 @enduml
