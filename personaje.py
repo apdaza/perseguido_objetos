@@ -1,6 +1,7 @@
 import pygame
 from pygame import *
 from pygame.sprite import Sprite
+from random import randint
 
 class Personaje(Sprite):
 
@@ -52,6 +53,8 @@ class Heroe(Personaje):
         if teclas[K_DOWN] or teclas[K_LEFT] or teclas[K_RIGHT] or teclas[K_UP]:
             self.cont += 1
             self.cont %= 3
+        if self.vida >= 0:
+            self.puntos += 1
 
     def draw(self, screen):
         fuente = pygame.font.Font(None, 20)
@@ -64,6 +67,13 @@ class Heroe(Personaje):
 
 
 class Villano(Personaje):
+    def __init__(self, sprites, pos):
+        super().__init__(sprites, pos)
+        self.velocidad = randint(1, 9)
+        self.rect.x = randint(10, 700)
+        self.rect.y = randint(10, 500)
+
+
     def update(self):
         if self.asociado.rect.x < self.rect.x:
             self.rect.x -= self.velocidad
